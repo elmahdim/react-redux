@@ -1,14 +1,28 @@
-const http = require('http');
+import express from 'express';
+import webpack from 'webpack';
+import path from 'path';
+import config from '../webpack.config';
+import open from 'open';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3030;
+const app = express();
+const compiler = webpack(config);
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n');
+app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, function(err) {
+    if (err) {
+        console.log(err);
+    } else {
+        open(`http://localhost:${port}`);
+    }
 });
