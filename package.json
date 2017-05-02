@@ -5,6 +5,9 @@
   "repository": "https://github.com/elmahdim/react-redux.git",
   "author": "elmahdim",
   "license": "MIT",
+  "scripts": {
+    "start": "babel-node config/server.js"
+  },
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
