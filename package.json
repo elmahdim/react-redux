@@ -6,9 +6,14 @@
   "author": "elmahdim",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node config/server.js"
+    "start": "babel-node config/server.js",
+    "lint": "node_modules/.bin/esw webpack.config src config"
   },
   "dependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-watch": "^3.1.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",

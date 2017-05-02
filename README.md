@@ -14,5 +14,6 @@ cd react-redux
 ### Available Scripts
 
 ```
-yarn start 
+yarn start
+yarn lint
 ```
